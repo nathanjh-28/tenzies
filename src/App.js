@@ -10,20 +10,25 @@ export default function App() {
         return num > 0 ? num : randomDie()
     }
 
+    function makeNumArr() {
+        const arr = [];
+        for (let i = 1; i < 11; i++) {
+            arr.push(randomDie())
+        }
+        return arr;
+    }
+
+    const randomNumArr = makeNumArr()
+    console.log(randomNumArr)
+
+    const numArrEls = randomNumArr.map((num, idx) => {
+        return <Die key={idx} value={num} />
+    })
+
     return (
         <main>
             <div className="die-container">
-
-                <Die value={randomDie()} />
-                <Die value={randomDie()} />
-                <Die value={randomDie()} />
-                <Die value={randomDie()} />
-                <Die value={randomDie()} />
-                <Die value={randomDie()} />
-                <Die value={randomDie()} />
-                <Die value={randomDie()} />
-                <Die value={randomDie()} />
-                <Die value={randomDie()} />
+                {numArrEls}
             </div>
 
         </main>
