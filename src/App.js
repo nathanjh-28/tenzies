@@ -4,6 +4,10 @@ import Die from './Die'
 
 export default function App() {
 
+    // state
+
+    const [dieArr, setDieArr] = React.useState(makeNumArr)
+
     function randomDie() {
 
         const num = Math.floor(Math.random() * 6)
@@ -18,10 +22,8 @@ export default function App() {
         return arr;
     }
 
-    const randomNumArr = makeNumArr()
-    console.log(randomNumArr)
 
-    const numArrEls = randomNumArr.map((num, idx) => {
+    const numArrEls = dieArr.map((num, idx) => {
         return <Die key={idx} value={num} />
     })
 
