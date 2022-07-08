@@ -22,6 +22,9 @@ export default function App() {
         return arr;
     }
 
+    function handleRoll() {
+        setDieArr(makeNumArr)
+    }
 
     const numArrEls = dieArr.map((num, idx) => {
         return <Die key={idx} value={num} />
@@ -32,7 +35,7 @@ export default function App() {
             <div className="die-container">
                 {numArrEls}
             </div>
-
+            <button onClick={handleRoll}>Roll</button>
         </main>
     )
 }
