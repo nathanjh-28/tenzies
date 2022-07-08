@@ -32,10 +32,10 @@ export default function App() {
 
     return (
         <main>
-            <div className="die-container">
+            <div className="dice-container">
                 {numArrEls}
             </div>
-            <button onClick={handleRoll}>Roll</button>
+            <button className="roll-dice" onClick={handleRoll}>Roll</button>
         </main>
     )
 }
