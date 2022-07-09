@@ -23,11 +23,10 @@ export default function App() {
 
     function handleRoll() {
         setDice(allNewDice())
-        console.log(dice)
     }
 
     const diceElements = dice.map((die) => {
-        return <Die key={die.id} value={die.value} />
+        return <Die key={die.id} value={die.value} held={die.isHeld} />
     })
 
     return (
