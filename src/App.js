@@ -6,34 +6,31 @@ export default function App() {
 
     // state
 
-    const [dieArr, setDieArr] = React.useState(makeNumArr)
+    const [dice, setDice] = React.useState(allNewDice())
 
-    function randomDie() {
-
-        const num = Math.floor(Math.random() * 6)
-        return num > 0 ? num : randomDie()
-    }
-
-    function makeNumArr() {
-        const arr = [];
-        for (let i = 1; i < 11; i++) {
-            arr.push(randomDie())
+    function allNewDice() {
+        const newDice = []
+        for (let i = 0; i < 10; i++) {
+            newDice.push({
+                value: Math.ceil(Math.random() * 6),
+                isHeld: false
+            })
         }
-        return arr;
+        return newDice
     }
 
     function handleRoll() {
-        setDieArr(makeNumArr)
+        setDice(allNewDice())
     }
 
-    const numArrEls = dieArr.map((num, idx) => {
-        return <Die key={idx} value={num} />
+    const diceElements = dice.map((die, idx) => {
+        return <Die key={idx} value={die.value} />
     })
 
     return (
         <main>
             <div className="dice-container">
-                {numArrEls}
+                {diceElements}
             </div>
             <button className="roll-dice" onClick={handleRoll}>Roll</button>
         </main>
