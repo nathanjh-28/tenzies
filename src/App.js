@@ -25,8 +25,24 @@ export default function App() {
         setDice(allNewDice())
     }
 
-    function holdDice(id) {
-        console.log(id)
+    function holdDice(thisId) {
+        const thisOne = dice.filter(item => {
+            return item.id === thisId
+        })
+        const obj = thisOne[0]
+        setDice(prev => {
+            const newPrev = prev.filter(item => {
+                return item.id !== thisId
+            })
+            return [
+                ...newPrev,
+                {
+                    value: obj.value,
+                    isHeld: !obj.isHeld,
+                    id: obj.id
+                }
+            ]
+        })
     }
 
     const diceElements = dice.map((die) => {
