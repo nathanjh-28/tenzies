@@ -25,8 +25,12 @@ export default function App() {
         setDice(allNewDice())
     }
 
+    function holdDice(id) {
+        console.log(id)
+    }
+
     const diceElements = dice.map((die) => {
-        return <Die key={die.id} value={die.value} held={die.isHeld} />
+        return <Die key={die.id} value={die.value} held={die.isHeld} handleClick={holdDice} id={die.id} />
     })
 
     return (
