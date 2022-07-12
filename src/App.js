@@ -26,27 +26,20 @@ export default function App() {
     }
 
     function holdDice(thisId) {
-        const thisOne = dice.filter(item => {
-            return item.id === thisId
+        setDice(prevDice => prevDice.map(die => {
+            return die.id === thisId ?
+                { ...die, isHeld: !die.isHeld } :
+                die
         })
-        const obj = thisOne[0]
-        setDice(prev => {
-            const newPrev = prev.filter(item => {
-                return item.id !== thisId
-            })
-            return [
-                ...newPrev,
-                {
-                    value: obj.value,
-                    isHeld: !obj.isHeld,
-                    id: obj.id
-                }
-            ]
-        })
+        )
     }
 
     const diceElements = dice.map((die) => {
-        return <Die key={die.id} value={die.value} held={die.isHeld} handleClick={holdDice} id={die.id} />
+        return <Die key={die.id}
+            value={die.value}
+            held={die.isHeld}
+            handleClick={() => holdDice(die.id)
+            } id={die.id} />
     })
 
     return (
