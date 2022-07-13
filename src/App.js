@@ -12,7 +12,16 @@ export default function App() {
     const [tenzies, setTenzies] = React.useState(false);
 
     React.useEffect(() => {
-        console.log('dice state changed')
+        let count = 0;
+        for (let i = 0; i < dice.length; i++) {
+            if (dice[i].isHeld && dice[i].value === dice[0].value) {
+                count++
+            }
+        }
+        if (count === 10) {
+            setTenzies(true)
+            console.log('tenzies!!!!');
+        }
     }, [dice])
 
     function allNewDice() {
