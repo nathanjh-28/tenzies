@@ -9,6 +9,12 @@ export default function App() {
 
     const [dice, setDice] = React.useState(allNewDice())
 
+    const [tenzies, setTenzies] = React.useState(false);
+
+    React.useEffect(() => {
+        console.log('dice state changed')
+    }, [dice])
+
     function allNewDice() {
         const newDice = []
         for (let i = 0; i < 10; i++) {
